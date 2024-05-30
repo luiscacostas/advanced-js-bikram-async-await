@@ -89,6 +89,7 @@ const getRandomCharacterInfo = async () => {
                 const data2 = await respuestaDos.json()
                 const firstEpisode = data2.episode
                 const dateEpisode = data2.air_date
+                paintBody(img, name, episodes, firstEpisode, dateEpisode)
                 return {img, name, episodes, firstEpisode, dateEpisode}
 
             }else{
@@ -100,6 +101,13 @@ const getRandomCharacterInfo = async () => {
     } catch (error) {
         throw console.error(error);
     }
+}
+
+const paintBody = (img, name, episodes, firstEpisode, dateEpisode)=>{
+    const body = document.querySelector('body')
+    const div = document.createElement('DIV')
+    div.innerHTML = `<img src="${img}"></img><p>${name}</p><p>${episodes}</p><p>${firstEpisode}</p><p>${dateEpisode}</p>`;
+    body.append(div)
 }
         
    
